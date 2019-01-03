@@ -1,0 +1,27 @@
+# Arquivo para deploy do CESS em produção.
+# VaultID - Soluções em criptografia e identidade.
+# 02/01/2019
+version: "3"
+services:
+  vaultid-cess:
+    image: harbor.lab.vaultid.com.br/vaultid/cess:v1.0.4
+    environment:
+      - "APACHE_PORT=8080"
+      - "HOSTNAME=localhost"
+      - "APACHE_SSL=false"
+    volumes:
+#      - path_crt:/etc/apache2/cert/cert.pem
+#      - path_key:/etc/apache2/cert/cert.key
+    networks:
+      - nw-vault-cloud
+  redis:
+    image: "healthcheck/redis:alpine"
+    expose:
+      - 6379
+    networks:
+      - nw-vault-cloud
+networks:
+  nw-vault-cloud:
+    driver: bridge
+    ipam:
+      driver: default
