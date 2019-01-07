@@ -1,4 +1,8 @@
-<div style="text-align:center"><img src="/images/vaultID.png"/></div>
+<p align="center">
+  <img src="/images/vaultID.png"/>
+</p>
+
+<div style="text-align:center"><img src=""/></div>
 
 # CESS
 ### Pré-requisitos
