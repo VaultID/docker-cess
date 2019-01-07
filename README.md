@@ -1,5 +1,6 @@
-![VaultID Logo](/images/vaultID.png)
-# VaultID - CESS
+![VaultID Logo]()
+<div style="text-align:center"><img src="/images/vaultID.png"/></div>
+# CESS
 
 ### Pré-requisitos
 
