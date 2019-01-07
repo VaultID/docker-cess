@@ -129,7 +129,7 @@ docker ps
 ```
 
 <p align="center">
-  <img src="/images/dockerps.png"/>
+  <img src="/images/dockerps2.png"/>
 </p>
 
 4 - Testando a aplicação:
