@@ -1,4 +1,5 @@
-# VaultID - CESS 
+![VaultID Logo](/images/vaultID.png)
+# VaultID - CESS
 
 ### Pré-requisitos
 
@@ -40,7 +41,14 @@ Para ambas as plataformas é necessário a instalação do [Docker-compose](http
     
 ### Configurações
 
-Os seguintes parâmetros são definidos dentro do arquivo prod-compose.yaml.
+Os seguintes parâmetros devem ser definidos dentro do arquivo prod-compose.yaml.
+
+* **vaultCloudClientId** - ID da aplicação cadastrada na cloud para o CESS. Cada instância deve ter sua própria identificação.
+
+* **vaultCloudClientSecret** - Senha da aplicação cadastrada na cloud para o CESS.
+
+* **cessUrl** - Define a URL utilizada para conexão ao Cess. Normalmente cria-se um registro de DNS apontando para o 
+container.
 
 * **APACHE_PORT** - Define a porta exposta pela aplicação. Aceita valores entre 1024 e 65535.
 
@@ -49,7 +57,7 @@ Os seguintes parâmetros são definidos dentro do arquivo prod-compose.yaml.
 * **APACHE_SSL** 
    - Defina para true se deseja que o Apache do container forneça o serviço com TLS ativo.  
    - Espera-se que o certificado digital e a respectiva chave sejam fornecidos através de um ponto de montagem no 
-   container. Descomente as respectivas referências na sessão 'volumes' e configure os arquivos conforme orientação.
+   container. Descomente a sessão 'volumes' e configure os arquivos conforme orientação.
 
         - Arquivo **path_crt** 
             - Espera-se um arquivo com a parte pública do certificado digital concatenado com as cadeias intermediárias 
@@ -90,6 +98,6 @@ docker ps
 ```
 
 4 - Testando a aplicação:
-```bash
-TESTE 
-```
+
+Após a confirmação de execução da aplicação é possível validar o estado da mesma acessando a URL configurada 
+em **cessUrl** ou, diretamente no servidor com a combinação **IP_SERVIDOR:APACHE_PORT**. 
