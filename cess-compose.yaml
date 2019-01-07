@@ -5,17 +5,22 @@ version: "3"
 services:
   cess:
     image: harbor.lab.vaultid.com.br/vaultid/cess:v1.0.7
+    depends_on:
+      - redis
+    restart: always
     environment:
       - "debug=false"
       - "vaultCloudUrl=https://apicloudid.vaultid.com.br"
-      - "vaultCloudClientId=false"
-      - "vaultCloudClientSecret=false"
+      - "vaultCloudClientId=123"
+      - "vaultCloudClientSecret=123"
       - "actTSA=http://act1.vaultid.com.br:9318"
       - "version=v1.0.7"
+      # Se necessário, edite apenas as variávies abaixo: #
       - "cessUrl=http://localhost:8080"
-      - "APACHE_PORT=8080"
-      - "HOSTNAME=localhost"
       - "APACHE_SSL=false"
+    ports:
+      # Definir a PORTA_EXTERNA pela qual o container será exposto na rede.
+      - 8080:8080
 #    volumes:
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
@@ -23,8 +28,7 @@ services:
       - nw-cess
   redis:
     image: "healthcheck/redis:alpine"
-    expose:
-      - 6379
+    restart: always
     networks:
       - nw-cess
 networks:

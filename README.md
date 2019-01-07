@@ -2,8 +2,6 @@
   <img src="/images/vaultID.png"/>
 </p>
 
-<div style="text-align:center"><img src=""/></div>
-
 # CESS
 ### Pré-requisitos
 
@@ -54,8 +52,6 @@ Os seguintes parâmetros devem ser definidos dentro do arquivo prod-compose.yaml
 * **cessUrl** - Define a URL utilizada para conexão ao Cess. Normalmente cria-se um registro de DNS apontando para o 
 container.
 
-* **APACHE_PORT** - Define a porta exposta pela aplicação. Aceita valores entre 1024 e 65535.
-
 * **HOSTNAME** - O nome do servidor identificado ao Apache. Utilize uma string sem espaços.
 
 * **APACHE_SSL** 
@@ -71,29 +67,60 @@ container.
             - Espera-se um arquivo contendo apenas a chave privada correspondente ao certificado digital utilizado. 
             A chave privada não pode ter senha e deve estar no formato PEM (codificada em base64).
 
+* **PORTA_EXTERNA** - Define a porta pela qual o serviço do CESS será exposto.
+
+#### Exemplo:
+
+Considerando o cenário:
+    - Ativando o SSL
+    - Os certificados estão salvos na pasta /opt/certs/cert.pem e /opt/certs/cert.key
+    - A url de acesso externo será https://cess.vaultid.com.br
+    - A porta que o container deve expor é a 443
+    
+Teremos a seguinte configuração:
+
+```yaml
+    ...
+      # Se necessário, edite apenas as variávies abaixo: #
+      - "cessUrl=https://cess.vaultid.com.br"
+      - "APACHE_SSL=true"
+    ports:
+      # Definir a PORTA_EXTERNA pela qual o container será exposto na rede.
+      - 443:8080
+    volumes:
+      - /opt/certs/cert.pem:/etc/apache2/cert/cert.pem
+      - /opt/certs/cert.key:/etc/apache2/cert/cert.key
+    ... 
+```
 
 ### Executando o CESS
 
 * **Atenção:** Antes de continuar é necessário solicitaro acesso ao repositório de imanges do CESS diretamente à equipe 
 de integração da VaultID.
    
-
 Após concluir e validar a instalação do docker e do docker-compose, salve e configure o arquivo cess-compose.yaml no servidor de escolhido.
 Pela linha de comando, navegue até a pasta de destino do arquivo e execute:
 
-1 - Docker login.
+1 - Docker login.  
 
 De posse do usuário e senha fornecidos, execute:
-
 ```bash
 docker login harbor.lab.vaultid.com.br
 ```
 
+<p align="center">
+  <img src="/images/login.png"/>
+</p>
+
 2 - Iniciando a aplicação.
 
 ```bash
-docker-compose -f cess-compose.yaml -up -d
+docker-compose -f cess-compose.yaml up -d
 ```
+
+<p align="center">
+  <img src="/images/dockerup.png"/>
+</p>
 
 3 - Verificando o estado da aplicação:
 
@@ -101,7 +128,15 @@ docker-compose -f cess-compose.yaml -up -d
 docker ps 
 ```
 
+<p align="center">
+  <img src="/images/dockerps.png"/>
+</p>
+
 4 - Testando a aplicação:
 
 Após a confirmação de execução da aplicação é possível validar o estado da mesma acessando a URL configurada 
 em **cessUrl** ou, diretamente no servidor com a combinação **IP_SERVIDOR:APACHE_PORT**. 
+
+<p align="center">
+  <img src="/images/teste.png"/>
+</p>
