@@ -1,7 +1,6 @@
-![VaultID Logo]()
 <div style="text-align:center"><img src="/images/vaultID.png"/></div>
-# CESS
 
+# CESS
 ### Pré-requisitos
 
 Para a configuração do endpoint, utilizamos como base o Docker CE, um gerenciador de containers que permite simplificar a 
