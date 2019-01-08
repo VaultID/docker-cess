@@ -133,7 +133,7 @@ docker ps
 4 - Testando a aplicação:
 
 Após a confirmação de execução da aplicação é possível validar o estado da mesma acessando a URL configurada 
-em **cessUrl** ou, diretamente no servidor com a combinação **IP_SERVIDOR:APACHE_PORT**. 
+em **cessUrl** ou, diretamente no servidor com a combinação **IP_SERVIDOR:PORTA_EXTERNA**. 
 
 <p align="center">
   <img src="/images/teste.png"/>
