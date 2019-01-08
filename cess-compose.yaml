@@ -20,8 +20,8 @@ services:
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
     ports:
-      # Definir a PORTA_EXTERNA pela qual o container será exposto na rede.
-      - 8080:8080
+      # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
+      - PORTA_EXTERNA:8080
 #    volumes:
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
