@@ -16,6 +16,7 @@ O mínimo necessário para execução em cada plataforma:
     - Versões:  
         - Windows 10 64bit: Pro ou Enterprise
         - Windows Server 2016.
+        - Docker versão 18+.
     - CPU com suporte a SLAT.
     - Flag de virtualização na BIOS do servidor.    
     - 2GB de RAM para a aplicação.
@@ -31,6 +32,7 @@ Docker para [Centos](https://docs.docker.com/v17.12/install/linux/docker-ce/cent
 Docker para [Debian](https://docs.docker.com/v17.12/install/linux/docker-ce/debian/#install-docker-ce)
     - Versões:
         - Debian 8+ ou Centos 7+ x86_64
+        - Docker versão 18+.
     - 2GB de RAM para a aplicação.
     - A quantidade de CPU depende do volume de assinaturas realizadas.       
     - 5GB de disco para aplicação e logs, sem contar o sistema operacional.
