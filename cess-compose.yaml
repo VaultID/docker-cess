@@ -12,8 +12,8 @@ services:
     environment:
       - "debug=false"
       - "vaultCloudUrl=https://apicloudid.vaultid.com.br"
-      - "vaultCloudClientId=123"
-      - "vaultCloudClientSecret=123"
+      - "vaultCloudClientId=false"
+      - "vaultCloudClientSecret=false"
       - "actTSA=http://act1.vaultid.com.br:9318"
       - "version=v1.0.7"
       # Se necessário, edite apenas as variávies abaixo: #
