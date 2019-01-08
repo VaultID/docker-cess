@@ -69,11 +69,11 @@ container.
 
 #### Exemplo:
 
-Considerando o cenário:
-    - Ativando o SSL
-    - Os certificados estão salvos na pasta /opt/certs/cert.pem e /opt/certs/cert.key
-    - A url de acesso externo será https://cess.vaultid.com.br
-    - A porta que o container deve expor é a 443
+Considerando o cenário:  
+    - Ativando o SSL.  
+    - Os certificados estão salvos na pasta /opt/certs/cert.pem e /opt/certs/cert.key  
+    - A url de acesso externo será https://cess.vaultid.com.br  
+    - A porta que o container deve expor é a 443  
     
 Teremos a seguinte configuração:
 
