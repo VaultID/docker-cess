@@ -93,7 +93,7 @@ Teremos a seguinte configuração:
 
 ### Executando o CESS
 
-* **Atenção:** Antes de continuar é necessário solicitaro acesso ao repositório de imanges do CESS diretamente à equipe 
+* **Atenção:** Antes de continuar é necessário solicitar o acesso ao repositório de imagens do CESS diretamente à equipe 
 de integração da VaultID.
    
 Após concluir e validar a instalação do docker e do docker-compose, salve e configure o arquivo cess-compose.yaml no servidor de escolhido.
