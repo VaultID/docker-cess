@@ -14,8 +14,7 @@ O mínimo necessário para execução em cada plataforma:
 
 * **Windows** - Documentação oficial [Windows](https://docs.docker.com/docker-for-windows/). 
     - Versões:  
-        - Windows 10 64bit: Pro ou Enterprise
-        - Windows Server 2016.
+        - Windows 10 64bit: Pro, Enterprise ou Estudante.
         - Docker versão 18+.
     - CPU com suporte a SLAT.
     - Flag de virtualização na BIOS do servidor.    
