@@ -69,6 +69,19 @@ container.
 
 * **PORTA_EXTERNA** - Define a porta pela qual o serviço do CESS será exposto.
 
+---
+#### Utilizando HSM local
+
+É possíve utilizar um HSM Dinamo localmente para armazenamento dos certificados.
+
+Nas configurações, descomente os campos:
+
+      #- "signatureAdapter=DinamoAdapter"
+      #- "hsmIp=IP_HSM"
+      #- "hsmPort=HSM_PORT"
+      
+Defina o IP e porta do HSM Dinamo local.
+
 #### Exemplo:
 
 Considerando o cenário:  

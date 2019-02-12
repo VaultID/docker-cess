@@ -4,7 +4,7 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:v1.0.7
+    image: harbor.lab.vaultid.com.br/cess/cess:latest
     depends_on:
       - redis
     restart: always
@@ -19,6 +19,10 @@ services:
       # Se necessário, edite apenas as variávies abaixo: #
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
+      # Configurar abaixo caso utilize HSM local.
+      #- "signatureAdapter=DinamoAdapter"
+      #- "hsmIp=IP_HSM"
+      #- "hsmPort=HSM_PORT"
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - PORTA_EXTERNA:8080
