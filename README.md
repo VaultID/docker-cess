@@ -10,21 +10,7 @@ configuração e gestão da solução.
 Consulte a [documentação oficial](https://www.docker.com/) para mais informações sobre 
 o Docker e seu funcionamento. 
 
-O mínimo necessário para execução em cada plataforma: 
-
-* **Windows** - Documentação oficial [Windows](https://docs.docker.com/docker-for-windows/). 
-    - Versões:  
-        - Windows 10 64bit: Pro, Enterprise ou Estudante.
-        - Docker versão 18+.
-    - CPU com suporte a SLAT.
-    - Flag de virtualização na BIOS do servidor.    
-    - 2GB de RAM para a aplicação.
-	- A quantidade de CPU depende do volume de assinaturas realizadas.       
-    - 5GB de disco para aplicação e logs, sem contar o sistema operacional.
-	- Acesso à internet para instalação de aplicativos.	
-	
-    Maiores informações: 
-    - [Docker para Windows: O que saber antes de instalar](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)  
+O mínimo necessário para execução é:   
     	 
 * **Linux**  
 Docker para [Centos](https://docs.docker.com/v17.12/install/linux/docker-ce/centos/#install-docker-ce )  
@@ -79,7 +65,35 @@ Nas configurações, descomente os campos:
       #- "hsmIp=IP_HSM"
       #- "hsmPort=HSM_PORT"
       
-Defina o IP e porta do HSM Dinamo local.
+Defina o IP e porta do HSM Dinamo local. 
+
+A utilização da API com HSM local utiliza um formato diferente para autenticação:
+
+Utilizando HSM em nuvem:
+```php
+Authorization => Bearer <token de acesso do usuário>
+```
+
+Utilizando HSM local:
+```php
+Authorization => VCSchema <schema vault cloud encodado em base64>
+```
+
+O VCSchema pode ser definido da seguinte forma:
+           
+* username:password  
+* username:password@ip  
+* username:password@ip:port  
+* username::accesstoken  
+* username::accesstoken@ip  
+* username::accesstoken@ip:port  
+
+O **username** e **password** utilizado pelo VCSchema são os mesmos utilizados para autenticação direta no HSM.
+Um mesmo usuário/slot pode possuir mais de um certificado, sendo que nesse caso, a aplicação deve repassar o certificate_alias 
+( alias da chave dentro do slot ) como parâmetro na chamada da API caso queira utilizar um certificado específico. 
+Caso contrário, o último certificado listado no slot será utilizado.
+
+---
 
 #### Exemplo:
 
