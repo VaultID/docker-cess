@@ -24,7 +24,7 @@ services:
       #- "hsmIp=IP_HSM"
       #- "hsmPort=HSM_PORT"
       #- "isPath=true"
-      #- "path=/var/www/data"
+      #- "path=/opt/data"
       #- "zSlotManagerUser="
       #- "zSlotManagerPw="
     ports:
@@ -33,6 +33,7 @@ services:
 #    volumes:
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
+#      - path_p12:/opt/data
     networks:
       - nw-cess
   redis:
