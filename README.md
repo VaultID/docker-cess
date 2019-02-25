@@ -93,6 +93,38 @@ Um mesmo usuário/slot pode possuir mais de um certificado, sendo que nesse caso
 ( alias da chave dentro do slot ) como parâmetro na chamada da API caso queira utilizar um certificado específico. 
 Caso contrário, o último certificado listado no slot será utilizado.
 
+##### Configurações para HSM local
+
+* signatureAdapter=DinamoAdapter
+    - Ativa o adapter para utilização de HSMLocal
+    
+* hsmIp=IP_HSM
+    - IP do HSM local
+
+* hsmPort=HSM_PORT
+    - Porta do HSM local. Default para 4433
+
+* isPath=true
+    - Ativa a busca e importa de arquivos p12 para o HSM durante a autenticação do usuário.
+    
+* path=/opt/data
+    - Diretório interno ao container no qual os arquivos de certificados serão pesquisados.
+
+* zSlotManagerUser
+    - Usuário no HSM com permissão para criar e listar slots.
+
+* zSlotManagerPw
+    - Senha do usuário citado acima.
+    
+Ao ativar a importação de arquivos p12, é necessário montar um volume com esses arquivos.   
+No arquivo cess-compose.yaml, descomente a seção **volumes** e subistitua a tag path_p12 pelo caminho do diretório local 
+onde os certificados estão armazenados.
+
+```yaml
+    volumes:
+      - path_p12:/opt/data
+```
+
 ---
 
 #### Exemplo:
