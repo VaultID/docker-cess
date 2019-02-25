@@ -23,6 +23,10 @@ services:
       #- "signatureAdapter=DinamoAdapter"
       #- "hsmIp=IP_HSM"
       #- "hsmPort=HSM_PORT"
+      #- "isPath=true"
+      #- "path=/var/www/data"
+      #- "zSlotManagerUser="
+      #- "zSlotManagerPw="
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - PORTA_EXTERNA:8080
