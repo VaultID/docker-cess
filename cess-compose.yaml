@@ -1,10 +1,10 @@
 # Arquivo para deploy do CESS em produção.
 # VaultID - Soluções em criptografia e identidade.
-# 02/01/2019
+# 27/02/2019
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:latest
+    image: harbor.lab.vaultid.com.br/cess/cess:v1.0.12
     depends_on:
       - redis
     restart: always
@@ -12,28 +12,24 @@ services:
     environment:
       - "debug=false"
       - "vaultCloudUrl=https://apicloudid.vaultid.com.br"
-      - "vaultCloudClientId=false"
-      - "vaultCloudClientSecret=false"
       - "actTSA=http://act1.vaultid.com.br:9318"
-      - "version=v1.0.7"
+      - "version=v1.0.12"
       # Se necessário, edite apenas as variávies abaixo: #
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
-      # Configurar abaixo caso utilize HSM local.
-      #- "signatureAdapter=DinamoAdapter"
-      #- "hsmIp=IP_HSM"
-      #- "hsmPort=HSM_PORT"
-      #- "isPath=true"
-      #- "path=/opt/data"
-      #- "zSlotManagerUser="
-      #- "zSlotManagerPw="
+      # Configuração para HSM local.
+      - "signatureAdapter=DinamoPkcs12Adapter"
+      - "hsmIp=IP_HSM"
+      - "hsmPort=4433"
+      - "zSlotManagerUser=false"
+      - "zSlotManagerPw=false"
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - PORTA_EXTERNA:8080
 #    volumes:
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
-#      - path_p12:/opt/data
+      - path_p12:/var/www/data
     networks:
       - nw-cess
   redis:

@@ -24,17 +24,12 @@ Docker para [Debian](https://docs.docker.com/v17.12/install/linux/docker-ce/debi
     - Acesso à internet para instalação de aplicativos.
     - Acesso por parte das aplicações integradas à aplicação.
     
-
 **Atenção**    
-Para ambas as plataformas é necessário a instalação do [Docker-compose](https://docs.docker.com/compose/install/#install-compose).      
+É necessário a instalação do [Docker-compose](https://docs.docker.com/compose/install/#install-compose).      
     
 ### Configurações
 
 Os seguintes parâmetros devem ser definidos dentro do arquivo prod-compose.yaml.
-
-* **vaultCloudClientId** - ID da aplicação cadastrada na cloud para o CESS. Cada instância deve ter sua própria identificação.
-
-* **vaultCloudClientSecret** - Senha da aplicação cadastrada na cloud para o CESS.
 
 * **cessUrl** - Define a URL utilizada para conexão ao Cess. Normalmente cria-se um registro de DNS apontando para o 
 container.
@@ -57,13 +52,17 @@ container.
 ---
 #### Utilizando HSM local
 
-É possíve utilizar um HSM Dinamo localmente para armazenamento dos certificados.
+É possíve utilizar um HSM Dinamo localmente para armazenamento dos certificados.  
+Para isso, é necessário a criação de um usuário com permissão de criar e listar slots no HSM.
 
-Nas configurações, descomente os campos:
+Nas configurações, configure os campos:
 
-      #- "signatureAdapter=DinamoAdapter"
-      #- "hsmIp=IP_HSM"
-      #- "hsmPort=HSM_PORT"
+```yaml
+      - "hsmIp=IP_HSM"
+      - "hsmPort=4433"
+      - "zSlotManagerUser=false"
+      - "zSlotManagerPw=false"
+```
       
 Defina o IP e porta do HSM Dinamo local. 
 
@@ -95,7 +94,7 @@ Caso contrário, o último certificado listado no slot será utilizado.
 
 ##### Configurações para HSM local
 
-* signatureAdapter=DinamoAdapter
+* signatureAdapter=DinamoPkcs12Adapter
     - Ativa o adapter para utilização de HSMLocal
     
 * hsmIp=IP_HSM
@@ -104,12 +103,6 @@ Caso contrário, o último certificado listado no slot será utilizado.
 * hsmPort=HSM_PORT
     - Porta do HSM local. Default para 4433
 
-* isPath=true
-    - Ativa a busca e importa de arquivos p12 para o HSM durante a autenticação do usuário.
-    
-* path=/opt/data
-    - Diretório interno ao container no qual os arquivos de certificados serão pesquisados.
-
 * zSlotManagerUser
     - Usuário no HSM com permissão para criar e listar slots.
 
@@ -117,12 +110,12 @@ Caso contrário, o último certificado listado no slot será utilizado.
     - Senha do usuário citado acima.
     
 Ao ativar a importação de arquivos p12, é necessário montar um volume com esses arquivos.   
-No arquivo cess-compose.yaml, descomente a seção **volumes** e subistitua a tag path_p12 pelo caminho do diretório local 
+No arquivo cess-compose.yaml, na seção **volumes**, subistitua a tag path_p12 pelo caminho do diretório local 
 onde os certificados estão armazenados.
 
 ```yaml
     volumes:
-      - path_p12:/opt/data
+      - path_p12:/var/www/data
 ```
 
 ---
