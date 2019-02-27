@@ -10,21 +10,7 @@ configuração e gestão da solução.
 Consulte a [documentação oficial](https://www.docker.com/) para mais informações sobre 
 o Docker e seu funcionamento. 
 
-O mínimo necessário para execução em cada plataforma: 
-
-* **Windows** - Documentação oficial [Windows](https://docs.docker.com/docker-for-windows/). 
-    - Versões:  
-        - Windows 10 64bit: Pro, Enterprise ou Estudante.
-        - Docker versão 18+.
-    - CPU com suporte a SLAT.
-    - Flag de virtualização na BIOS do servidor.    
-    - 2GB de RAM para a aplicação.
-	- A quantidade de CPU depende do volume de assinaturas realizadas.       
-    - 5GB de disco para aplicação e logs, sem contar o sistema operacional.
-	- Acesso à internet para instalação de aplicativos.	
-	
-    Maiores informações: 
-    - [Docker para Windows: O que saber antes de instalar](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)  
+O mínimo necessário para execução:  
     	 
 * **Linux**  
 Docker para [Centos](https://docs.docker.com/v17.12/install/linux/docker-ce/centos/#install-docker-ce )  
@@ -40,7 +26,7 @@ Docker para [Debian](https://docs.docker.com/v17.12/install/linux/docker-ce/debi
     
 
 **Atenção**    
-Para ambas as plataformas é necessário a instalação do [Docker-compose](https://docs.docker.com/compose/install/#install-compose).      
+É necessário a instalação do [Docker-compose](https://docs.docker.com/compose/install/#install-compose).      
     
 ### Configurações
 
@@ -69,18 +55,6 @@ container.
 * **PORTA_EXTERNA** - Define a porta pela qual o serviço do CESS será exposto.
 
 ---
-#### Utilizando HSM local
-
-É possíve utilizar um HSM Dinamo localmente para armazenamento dos certificados.
-
-Nas configurações, descomente os campos:
-
-      #- "signatureAdapter=DinamoAdapter"
-      #- "hsmIp=IP_HSM"
-      #- "hsmPort=HSM_PORT"
-      
-Defina o IP e porta do HSM Dinamo local.
-
 #### Exemplo:
 
 Considerando o cenário:  
