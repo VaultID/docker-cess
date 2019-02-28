@@ -4,7 +4,7 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:v1.0.12
+    image: harbor.lab.vaultid.com.br/cess/cess:v1.0.13-rc1
     depends_on:
       - redis
     restart: always
@@ -26,10 +26,10 @@ services:
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - PORTA_EXTERNA:8080
-#    volumes:
+    volumes:
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
-      - path_p12:/var/www/data
+      - path_p12:/var/www/certs
     networks:
       - nw-cess
   redis:
