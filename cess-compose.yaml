@@ -15,7 +15,7 @@ services:
       - "vaultCloudClientId=false"
       - "vaultCloudClientSecret=false"
       - "actTSA=http://act1.vaultid.com.br:9318"
-      - "version=v1.0.12"
+      - "version=v1.0.13-rc1"
       # Se necessário, edite apenas as variávies abaixo: #
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
