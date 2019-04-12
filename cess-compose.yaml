@@ -4,7 +4,7 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:1.0.13-rc8
+    image: harbor.lab.vaultid.com.br/cess/cess:1.0.13-rc11
     depends_on:
       - redis
     restart: always
@@ -13,7 +13,7 @@ services:
       - "debug=false"
       - "vaultCloudUrl=https://apicloudid.vaultid.com.br"
       - "actTSA=http://act1.vaultid.com.br:9318"
-      - "version=1.0.13-rc8"
+      - "version=1.0.13-rc11"
       # Se necessário, edite apenas as variávies abaixo: #
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
