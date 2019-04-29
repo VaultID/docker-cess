@@ -24,9 +24,16 @@ Docker para [Debian](https://docs.docker.com/v17.12/install/linux/docker-ce/debi
     - Acesso à internet para instalação de aplicativos.
     - Acesso por parte das aplicações integradas à aplicação.
     
-
 **Atenção**    
-É necessário a instalação do [Docker-compose](https://docs.docker.com/compose/install/#install-compose).      
+É necessário a instalação do [Docker-compose](https://docs.docker.com/compose/install/#install-compose).
+
+**Rede e conectividade**
+Para o funcionamento do CESS é necessário acesso aos endpoints do provedor de assinaturas nas URLs:
+
+  - apicloudid.vaultid.com.br
+  - portalapicloudid.vaultid.com.br
+  
+A comunicação entre o CESS e os endpoints citados não pode ser realizada com inspeção SSL/TLS ou algum tipo de homem do meio que intercepte e interfira na abertura de sessão.
     
 ### Configurações
 
