@@ -32,8 +32,19 @@ Para o funcionamento do CESS é necessário acesso aos endpoints do provedor de 
 
   - apicloudid.vaultid.com.br
   - portalapicloudid.vaultid.com.br
+   
+Também é necessário acesso aos repositórios de LCR's (lista de certificados revogados) referentes aos certificados utilizados. Os repositórios variam de acordo com a Autoridade Certificadora responsável pela emissão do certificado.
+
+Para clientes emitindo pela AC Soluti, os endpoints são:
+
+  - ccd.acsoluti.com.br
+  - ccd2.acsoluti.com.br
   
+Para a utilização de carimbo no tempo é necessário liberar o endpoint do TSA. Esse endpoint varia de acordo com a solução escolhida.  
+
 A comunicação entre o CESS e os endpoints citados não pode ser realizada com inspeção SSL/TLS ou algum tipo de homem do meio que intercepte e interfira na abertura de sessão.
+
+A solução não inicia acessos à rede interna. O tráfego de saída pode ser limitado aos clientes que consomem os serviços e aos endpoints citados.
     
 ### Configurações
 
