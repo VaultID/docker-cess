@@ -27,7 +27,7 @@ Docker para [Debian](https://docs.docker.com/v17.12/install/linux/docker-ce/debi
 **Atenção**    
 É necessário a instalação do [Docker-compose](https://docs.docker.com/compose/install/#install-compose).
 
-**Rede e conectividade**
+**Rede e conectividade**  
 Para o funcionamento do CESS é necessário acesso aos endpoints do provedor de assinaturas nas URLs:
 
   - apicloudid.vaultid.com.br
