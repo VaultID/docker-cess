@@ -102,9 +102,9 @@ O VCSchema pode ser definido da seguinte forma:
 * username:password  
 * username:password@ip  
 * username:password@ip:port  
-* username::accesstoken  
-* username::accesstoken@ip  
-* username::accesstoken@ip:port  
+* username|accesstoken  
+* username|accesstoken@ip  
+* username|accesstoken@ip:port  
 
 O **username** e **password** utilizado pelo VCSchema são os mesmos utilizados para autenticação direta no HSM.
 Um mesmo usuário/slot pode possuir mais de um certificado, sendo que nesse caso, a aplicação deve repassar o certificate_alias 
@@ -129,12 +129,12 @@ Caso contrário, o último certificado listado no slot será utilizado.
     - Senha do usuário citado acima.
     
 Ao ativar a importação de arquivos p12, é necessário montar um volume com esses arquivos.   
-No arquivo cess-compose.yaml, na seção **volumes**, subistitua a tag path_p12 pelo caminho do diretório local 
+No arquivo cess-compose.yaml, na seção **volumes**, subistitua a tag path pelo caminho do diretório local 
 onde os certificados estão armazenados.
 
 ```yaml
     volumes:
-      - path_p12:/var/www/data
+      - path:/var/www/data
 ```
 
 ---
