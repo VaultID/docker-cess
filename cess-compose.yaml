@@ -4,7 +4,7 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:1.0.13
+    image: harbor.lab.vaultid.com.br/cess/cess:1.0.18-rc1
     depends_on:
       - redis
     restart: always
@@ -13,7 +13,7 @@ services:
       - "debug=false"
       - "vaultCloudUrl=https://apicloudid.vaultid.com.br"
       - "actTSA=http://act1.vaultid.com.br:9318"
-      - "version=1.0.13"
+      - "version=1.0.18-rc1"
       # Se necessário, edite apenas as variávies abaixo: #
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
@@ -23,6 +23,12 @@ services:
       - "hsmPort=4433"
       - "zSlotManagerUser=false"
       - "zSlotManagerPw=false"
+      - "tokenValidityMAX=6"
+      - "ttlCacheGeneric=21600"
+      - "ttlCacheTrust=21600"
+      - "lifetime=86400"
+      - "sleep=100"
+      - "limit=50"
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - PORTA_EXTERNA:8080
