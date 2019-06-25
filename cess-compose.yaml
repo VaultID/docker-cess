@@ -29,6 +29,8 @@ services:
       - "lifetime=86400"
       - "sleep=100"
       - "limit=50"
+      - "cacheDir=/var/www/data/files/cache"
+      - "HSM_LOAD_BALANCE_LIST="
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - PORTA_EXTERNA:8080
