@@ -54,6 +54,12 @@ Os seguintes parâmetros devem ser definidos dentro do arquivo prod-compose.yaml
 
 * **vaultCloudClientSecret** - Senha da aplicação cadastrada na cloud para o CESS.
 
+* **lifetime** - Tempo (segundos) que os arquivos (tcn) irão ficar armazenado no CESS.
+
+* **sleep** - Intervalo (segundos) que o garbage collector irá executar para limpar os arquivos.
+
+* **limit** - Quantidade máxima de arquivos que serão apagados a cada iteração do garbage.
+
 * **cessUrl** - Define a URL utilizada para conexão ao Cess. Normalmente cria-se um registro de DNS apontando para o 
 container.
 
