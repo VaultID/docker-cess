@@ -53,6 +53,10 @@ Os seguintes parâmetros devem ser definidos dentro do arquivo prod-compose.yaml
 * **cessUrl** - Define a URL utilizada para conexão ao Cess. Normalmente cria-se um registro de DNS apontando para o 
 container.
 
+* **cacheDir** - Define local onde será armazenado os caches (UTILIZAR ESSE PARAMETRO APENAS QUANDO UTILIZAR CACHE FILESYSTEM)
+
+* **HSM_LOAD_BALANCE_LIST** - Arquivo que contém a lista de ips e portas dos HSM
+
 * **APACHE_SSL** 
    - Defina para true se deseja que o Apache do container forneça o serviço com TLS ativo.  
    - Espera-se que o certificado digital e a respectiva chave sejam fornecidos através de um ponto de montagem no 
