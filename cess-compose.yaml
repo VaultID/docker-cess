@@ -13,7 +13,7 @@ services:
       - "debug=false"
       - "vaultCloudUrl=https://apicloudid.vaultid.com.br"
       - "actTSA=http://act1.vaultid.com.br:9318"
-      - "version=1.0.18-rc1"
+      - "version=1.0.18-rc2"
       # Se necessário, edite apenas as variávies abaixo: #
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
