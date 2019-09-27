@@ -1,22 +1,22 @@
 # Arquivo para deploy do CESS em produção.
 # VaultID - Soluções em criptografia e identidade.
-# 28/02/2019
+# 02/01/2019
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:1.0.18
+    image: harbor.lab.vaultid.com.br/cess/cess:1.0.20
     depends_on:
       - redis
     restart: always
     user: "33"
     environment:
       - "debug=false"
-      - "vaultCloudUrl=https://apicloudid.vaultid.com.br"
-      - "vaultCloudClientId=false"
-      - "vaultCloudClientSecret=false"
+      - "validateCertificate=true"
       - "actTSA=http://act1.vaultid.com.br:9318"
-      - "version=1.0.18"
+      - "version=1.0.20"
       # Se necessário, edite apenas as variávies abaixo: #
+      - 'urlsMultiCloud={"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"false","client_secret":"false"},"https:\/\/apihom.birdid.com.br":{"id":"BIRDID","client_id":"false","client_secret":"false"}}'
+      - "signatureAdapter=MultiCloudAdapter"
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
       - "tokenValidityMAX=6"
@@ -25,9 +25,10 @@ services:
       - "lifetime=86400"
       - "sleep=100"
       - "limit=50"
+      - 'level=INFO'
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
-      - PORTA_EXTERNA:8080
+      - 8080:8080
 #    volumes:
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
