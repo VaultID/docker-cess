@@ -4,7 +4,7 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:1.0.20
+    image: harbor.lab.vaultid.com.br/cess/cess:1.0.21-rc2
     depends_on:
       - redis
     restart: always
@@ -13,7 +13,7 @@ services:
       - "debug=false"
       - "validateCertificate=true"
       - "actTSA=http://act1.vaultid.com.br:9318"
-      - "version=1.0.20"
+      - "version=1.0.21-rc2"
       # Se necessário, edite apenas as variávies abaixo: #
       - 'urlsMultiCloud={"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"false","client_secret":"false"},"https:\/\/apihom.birdid.com.br":{"id":"BIRDID","client_id":"false","client_secret":"false"}}'
       - "signatureAdapter=MultiCloudAdapter"
@@ -25,6 +25,9 @@ services:
       - "lifetime=86400"
       - "sleep=100"
       - "limit=50"
+      - "MEMORY_LIMIT=1024M"
+      - "America/Sao_Paulo"
+      - "timezone=America/Sao_Paulo"
       - 'level=INFO'
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
