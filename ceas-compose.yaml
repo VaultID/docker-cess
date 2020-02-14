@@ -1,0 +1,47 @@
+# Arquivo para deploy do CEAS em produção.
+# VaultID - Soluções em criptografia e identidade.
+# 02/01/2020
+version: "3"
+services:
+  cess:
+    image: harbor.lab.vaultid.com.br/cess/ceas:1.0.0
+    depends_on:
+      - redis
+    restart: always
+    user: "33"
+    environment:
+     - 'clientIdMd=sample'       
+     - 'clientSecretMd=sample'
+     - 'externalMd=<url base>/callback' #url callback interna
+     - 'redirectUriMd=<url base>/sample.php' #url callback do sample.php
+     - 'baseUrlInternal=<url base>' #base url interna
+     - 'baseUrl=<url base>' #base url externa
+     - 'myBaseUri=<url base>/sample.php' #url base sample
+     - "redisHost=redis"
+     - "redisPort=6379"
+     - "dirTrust=/var/www/data/trust/" #cadeias que validador de assinatura confiará 
+     - "lifetime=86400" 
+     - "companyLogo=<url>" #url com logo da empresa
+     - "sslverifypeer=false"
+     - "APACHE_SSL=true"
+     - 'urlsMultiCloud={"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTIDHOM","adapterid":"VAULTIDHOM","client_id":"clientid","client_secret":"clientsecret"},"https:\/\/apicloudid.vaultid.com.br":{"id":"VAULTID","adapterid":"VAULTID","client_id":"clientid","client_secret":"clientsecret"},"https:\/\/api.birdid.com.br":{"id":"BIRDID","adapterid":"BIRDID","client_id":"clientid","client_secret":"clientsecret"},"https:\/\/neoid.estaleiro.serpro.gov.br\/smartcert-api":{"id":"SERPRO","adapterid":"SERPRO","client_id":"clientid","client_secret":"clientsecret", "grant_type":{"password": false}}}'
+     
+    ports:
+      # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
+      - 8080:8080
+    volumes:
+      - ./cert/apache.crt:/etc/apache2/cert/cert.pem
+      - ./cert/apache.key:/etc/apache2/cert/cert.key
+      - ./cert/AC.pem:/etc/apache2/cert/AC.pem
+    networks:
+      - nw-cess
+  redis:
+    image: "healthcheck/redis:alpine"
+    restart: always
+    networks:
+      - nw-cess
+networks:
+  nw-cess:
+    driver: bridge
+    ipam:
+      driver: default
