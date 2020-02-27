@@ -13,8 +13,8 @@ o Docker e seu funcionamento.
 O mínimo necessário para execução é:   
     	 
 * **Linux**  
-Docker para [Centos](https://docs.docker.com/v17.12/install/linux/docker-ce/centos/#install-docker-ce )  
-Docker para [Debian](https://docs.docker.com/v17.12/install/linux/docker-ce/debian/#install-docker-ce)
+Docker para [Centos](https://docs.docker.com/install/linux/docker-ce/centos/)  
+Docker para [Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
     - Versões:
         - Debian 8+ ou Centos 7+ x86_64
         - Docker versão 18+.
