@@ -63,6 +63,10 @@ Os seguintes parâmetros devem ser definidos dentro do arquivo prod-compose.yaml
 * **cessUrl** - Define a URL utilizada para conexão ao Cess. Normalmente cria-se um registro de DNS apontando para o 
 container.
 
+* **redisCluster** Caso queria utilizar redis cluster, deverá setar true
+
+* **seedsCluster** Caso habilite redisCluster=true, deverá configurar esta variável com os nós. Ex: ["ip1:port1", "ip2:port2"... , "ipn:portn"]
+
 * **APACHE_SSL** 
    - Defina para true se deseja que o Apache do container forneça o serviço com TLS ativo.  
    - Espera-se que o certificado digital e a respectiva chave sejam fornecidos através de um ponto de montagem no 
@@ -150,3 +154,60 @@ em **cessUrl** ou, diretamente no servidor com a combinação **IP_SERVIDOR:PORT
 <p align="center">
   <img src="/images/teste.png"/>
 </p>
+
+
+
+--- 
+### Configuração do cluster (Redis) - Docker
+
+> Nesta etapa já pressupõe que o cliente tenha 3 máquinas distintas com o docker instalado.
+
+Será instalado 2 redis (master e slave) em cada máquina.
+
+Como exemplo utilizaremos 3 máquinas com os respectivos IPs: <i> 192.168.0.16, 192.168.0.19 e 192.168.0.20:  </i>
+
+Roda os seguintes comandos nos respectivos IPs
+
+<br>
+
+> IP [192.168.0.16]
+
+<i>$ docker run -d --name redis-7000 -p 7000:7000 --network host redis:alpine redis-server --port 7000 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes </i>
+
+<i>$ docker run -d --name redis-7001 -p 7001:7001 --network host redis:alpine redis-server --port 7001 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes </i>
+
+
+
+> IP [192.168.0.19]
+
+
+<i>$ docker run -d --name redis-7002 -p 7002:7002 --network host redis:alpine redis-server --port 7002 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes</i>
+
+<i>$ docker run -d --name redis-7003 -p 7003:7003 --network host redis:alpine redis-server --port 7003 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes</i>
+
+
+> IP [192.168.0.20]
+
+<i>$ docker run -d --name redis-7004 -p 7004:7004 --network host redis:alpine redis-server --port 7004 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes</i>
+
+<i>$ docker run -d --name redis-7005 -p 7005:7005 --network host redis:alpine redis-server --port 7005 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes</i>
+
+
+E por fim execute o seguinte comando na máquina 1 (192.168.0.16): <i>$ redis-cli --cluster create 192.168.0.16:7000 192.168.0.16:7001 192.168.0.19:7002 192.168.0.19:7003 192.168.0.20:7004 192.168.0.20:7005 --cluster-replicas 1 </i>
+
+Este comando irá criar um master e um slave para cada máquina
+
+
+Para testar o cluster, acesse o primeiro redis:
+
+$ redis-cli -c -h 192.168.0.16 -p 7000 </br>
+$ set chave valor
+
+Acesse algum outro redis:
+
+$ redis-cli -c -p 192.168.0.20 -p 7005 </br>
+$ get chave
+
+É necessário retornar <i>"valor"</i>
+
+---
