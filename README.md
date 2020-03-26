@@ -63,9 +63,9 @@ Os seguintes parâmetros devem ser definidos dentro do arquivo prod-compose.yaml
 * **cessUrl** - Define a URL utilizada para conexão ao Cess. Normalmente cria-se um registro de DNS apontando para o 
 container.
 
-* **redisCluster** Caso queria utilizar redis cluster, deverá setar true
+* **redisCluster** Caso queria utilizar redis cluster, deverá setar a variavel. Obs: setar apenas se for utilizar redis cluster
 
-* **seedsCluster** Caso habilite redisCluster=true, deverá configurar esta variável com os nós. Ex: ["ip1:port1", "ip2:port2"... , "ipn:portn"]
+* **seedsCluster** Caso habilite variável 'redisCluster', deverá configurar esta variável com os nós. Ex: ["ip1:port1", "ip2:port2"... , "ipn:portn"]
 
 * **APACHE_SSL** 
    - Defina para true se deseja que o Apache do container forneça o serviço com TLS ativo.  
