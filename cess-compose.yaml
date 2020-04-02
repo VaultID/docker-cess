@@ -4,7 +4,7 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:1.0.24-rc1
+    image: harbor.lab.vaultid.com.br/cess/cess:1.0.25
     depends_on:
       - redis
     restart: always
@@ -13,7 +13,7 @@ services:
       - "debug=false"
       - "validateCertificate=true"
       - "actTSA=http://act1.vaultid.com.br:9318"
-      - "version=1.0.24-rc1"
+      - "version=1.0.25"
       # Se necessário, edite apenas as variávies abaixo: #
       - 'urlsMultiCloud={"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"false","client_secret":"false"},"https:\/\/apihom.birdid.com.br":{"id":"BIRDID","client_id":"false","client_secret":"false"}}'
       - "signatureAdapter=MultiCloudAdapter"
