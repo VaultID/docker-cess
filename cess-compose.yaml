@@ -15,7 +15,7 @@ services:
       - "actTSA=http://act1.vaultid.com.br:9318"
       - "version=1.0.25"
       # Se necessário, edite apenas as variávies abaixo: #
-      - 'urlsMultiCloud={"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"false","client_secret":"false"},"https:\/\/apihom.birdid.com.br":{"id":"BIRDID","client_id":"false","client_secret":"false"}}'
+      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"false","client_secret":"false"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"false","client_secret":"false"}}'
       - "signatureAdapter=MultiCloudAdapter"
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
