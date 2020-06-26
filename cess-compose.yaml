@@ -10,11 +10,8 @@ services:
     restart: always
     user: "33"
     environment:
-      - 'clientIdMd=false'
-      - 'clientSecretMd=false'
-      - "debug=false"
-      - "validateCertificate=true"
-      - "actTSA=http://act1.vaultid.com.br:9318"
+      - 'clientIdMd=<clientidmocked>'
+      - 'clientSecretMd=<clientsecretmocked>'
       # Se necessário, edite apenas as variávies abaixo: #
       - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"false","client_secret":"false"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"false","client_secret":"false"}}'
       - "signatureAdapter=MultiCloudAdapter"
@@ -25,7 +22,7 @@ services:
       - "ttlCacheTrust=21600"
       - "lifetime=86400"
       - "sleep=100"
-      - "limit=50"
+      - "limit=100"
       - "MEMORY_LIMIT=1024M"
       - "America/Sao_Paulo"
       - "timezone=America/Sao_Paulo"
@@ -34,6 +31,7 @@ services:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - 8080:8080
 #    volumes:
+#       - ./hom-truststore:/var/www/data/trust
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
     networks:
