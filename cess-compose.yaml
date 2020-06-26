@@ -13,7 +13,7 @@ services:
       - 'clientIdMd=<clientidmocked>'
       - 'clientSecretMd=<clientsecretmocked>'
       # Se necessário, edite apenas as variávies abaixo: #
-      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"false","client_secret":"false"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"false","client_secret":"false"}}'
+      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"}}'
       - "signatureAdapter=MultiCloudAdapter"
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
