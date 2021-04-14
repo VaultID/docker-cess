@@ -4,14 +4,14 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:1.0.46-rc1
+    image: harbor.lab.vaultid.com.br/cess/cess:1.0.47
     depends_on:
       - redis
     restart: always
     user: "33"
     environment:
-      - 'clientIdMd=<clientidmocked>'
-      - 'clientSecretMd=<clientsecretmocked>'
+      - 'clientIdMd=SEU_CLIENT_ID'
+      - 'clientSecretMd=SEU_CLIENT_SECRET'
       # Se necessário, edite apenas as variávies abaixo: #
       - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"}}'
       - "signatureAdapter=MultiCloudAdapter"
