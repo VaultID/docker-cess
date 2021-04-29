@@ -27,6 +27,9 @@ services:
       - "America/Sao_Paulo"
       - "timezone=America/Sao_Paulo"
       - 'level=INFO'
+      - "redisHost=redis"
+      - "redisPort=6379"
+
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - 8080:8080
