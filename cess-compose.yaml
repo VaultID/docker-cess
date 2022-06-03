@@ -34,6 +34,7 @@ services:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - 8080:8080
 #    volumes:
+#      - ./AcPrivada-truststore:/var/www/data/trust
 #      - ./hom-truststore:/var/www/data/trust
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
