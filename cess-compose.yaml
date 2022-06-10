@@ -27,6 +27,8 @@ services:
       - "America/Sao_Paulo"
       - "timezone=America/Sao_Paulo"
       - 'level=INFO'
+      - "UPLOAD_MAX_FILESIZE=50M"
+      - "POST_MAX_SIZE=50M"
       - "redisHost=redis"
       - "redisPort=6379"
 
