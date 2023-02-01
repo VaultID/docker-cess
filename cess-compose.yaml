@@ -38,6 +38,7 @@ services:
 #    volumes:
 #      - ./AcPrivada-truststore:/var/www/data/trust
 #      - ./hom-truststore:/var/www/data/trust
+#      - ./Certificados:/var/www/data/certs
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
 #      - ./license:/var/www/data/license
