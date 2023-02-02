@@ -37,7 +37,7 @@ services:
       - "timeout=50""
       - "mockedUsername=clientId"
       - "mockedPassword=clientSecret"
-      - "billingApi=https://billing.lab.vaultid.com.br"  
+      - "billingApi=https://billing.hom.vaultid.com.br"  
 #      - "multiSignerAuth=[{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"}]" #Tasy
       - "multiSignerAuth=[{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"}]" #MV Sistemas MuiltiPJ  
     ports:
