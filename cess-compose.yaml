@@ -10,8 +10,8 @@ services:
     restart: always
     user: "33"
     environment:
-      - 'clientIdMd='
-      - 'clientSecretMd='
+      - 'clientIdMd=SEU_CLIENT_ID'
+      - 'clientSecretMd=SEU_CLIENT_SECRET'
       # Se necessário, edite apenas as variávies abaixo: #
       - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","SEU_CLIENT_ID":"","client_secret":"SEU_CLIENT_SECRET"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","SEU_CLIENT":"","SEU_CLIENT_SECRET":""}}'
       - "signatureAdapter=MultiAdapter"
