@@ -10,11 +10,14 @@ services:
     restart: always
     user: "33"
     environment:
-      - 'clientIdMd=SEU_CLIENT_ID'
-      - 'clientSecretMd=SEU_CLIENT_SECRET'
+      - 'clientIdMd='
+      - 'clientSecretMd='
       # Se necessário, edite apenas as variávies abaixo: #
-      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"}}'
-      - "signatureAdapter=MultiCloudAdapter"
+      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","SEU_CLIENT_ID":"","client_secret":"SEU_CLIENT_SECRET"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","SEU_CLIENT":"","SEU_CLIENT_SECRET":""}}'
+      - "signatureAdapter=MultiAdapter"
+      - 'adapters=["MockedWingsPkcs12Adapter","MultiCloudAdapter","Pkcs12Adapter"]'
+      - "isPath=true"
+      - "path=/var/www/data/certs"      
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
       - "tokenValidityMAX=6"
@@ -26,22 +29,27 @@ services:
       - "MEMORY_LIMIT=4096M"
       - "America/Sao_Paulo"
       - "timezone=America/Sao_Paulo"
-      - 'level=INFO'
+      - 'level=DEBUG'
       - "UPLOAD_MAX_FILESIZE=50M"
       - "POST_MAX_SIZE=50M"
       - "redisHost=redis"
       - "redisPort=6379"
-
+      - "timeout=50""
+      - "mockedUsername=clientId"
+      - "mockedPassword=clientSecret"
+      - "billingApi=https://billing.lab.vaultid.com.br"  
+#      - "multiSignerAuth=[{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"}]" #Tasy
+      - "multiSignerAuth=[{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"}]" #MV Sistemas MuiltiPJ  
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
-      - 8080:8080
-#    volumes:
-#      - ./AcPrivada-truststore:/var/www/data/trust
+      - 8081:8080
+    volumes:
 #      - ./hom-truststore:/var/www/data/trust
-#      - ./Certificados:/var/www/data/certs
+      - ./Certificados:/var/www/data/certs
+#      - ./license:/var/www/data/license
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
-#      - ./license:/var/www/data/license
+#      - ./AcPrivada-truststore:/var/www/data/trust
     networks:
       - nw-cess
   redis:
