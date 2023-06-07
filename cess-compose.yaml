@@ -34,7 +34,7 @@ services:
       - "POST_MAX_SIZE=50M"
       - "redisHost=redis"
       - "redisPort=6379"
-      - "timeout=50""
+      - "timeout=50"
       - "mockedUsername=clientId"
       - "mockedPassword=clientSecret"
       - "billingApi=https://billing.hom.vaultid.com.br"  
