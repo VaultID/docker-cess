@@ -10,11 +10,14 @@ services:
     restart: always
     user: "33"
     environment:
-      - 'clientIdMd=SEU_CLIENT_ID'
-      - 'clientSecretMd=SEU_CLIENT_SECRET'
+      - 'clientIdMd=solutiteste'
+      - 'clientSecretMd=solutiteste'
       # Se necessário, edite apenas as variávies abaixo: #
-      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"}}'
-      - "signatureAdapter=MultiCloudAdapter"
+      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br": [{"id": "SOLUTI01","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI02","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI03","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"}],"https:\/\/apicloudid.hom.vaultid.com.br": [{"id": "VAULTID01","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI02","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "VAULTID03","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"}]}'
+      - "signatureAdapter=MultiAdapter"
+      - 'adapters=["MockedWingsPkcs12Adapter","MultiCloudAdapter","Pkcs12Adapter"]'
+      - "isPath=true"
+      - "path=/var/www/data/certs"
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
       - "tokenValidityMAX=6"
@@ -29,11 +32,15 @@ services:
       - 'level=INFO'
       - "UPLOAD_MAX_FILESIZE=50M"
       - "POST_MAX_SIZE=50M"
-      - "redisHost=redis"
-      - "redisPort=6379"
-      - "SERVER_NAME=IP_Servidor:8080"
+      - "redisHost=redis" 
+      - "SERVER_NAME=cess.mv.lab.vaultid.com.br:8098"
       - "HTTP_HTTPS=off"
-
+      - "mockedUsername=solutiteste"
+      - "mockedPassword=solutiteste"
+      - "billingApi=https://billing.hom.vaultid.com.br"
+#      - "multiSignerAuth=[{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"}]"
+      - "redisPort=6379"
+            
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - 8080:8080
