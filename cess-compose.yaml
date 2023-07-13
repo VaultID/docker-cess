@@ -13,7 +13,7 @@ services:
       - 'clientIdMd=solutiteste'
       - 'clientSecretMd=solutiteste'
       # Se necessário, edite apenas as variávies abaixo: #
-      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br": [{"id": "SOLUTI01","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI02","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI03","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"}],"https:\/\/apicloudid.hom.vaultid.com.br": [{"id": "VAULTID01","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI02","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "VAULTID03","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"}]}'
+      - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br": [{"id": "SOLUTI01","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI02","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI03","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"}],"https:\/\/apicloudid.hom.vaultid.com.br": [{"id": "VAULTID01","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI02","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"},{"id": "SOLUTI03","client_id": "SEU_CLIENT_ID","client_secret": "SEU_CLIENT_SECRET"}]}'
       - "signatureAdapter=MultiAdapter"
       - 'adapters=["MockedWingsPkcs12Adapter","MultiCloudAdapter","Pkcs12Adapter"]'
       - "isPath=true"
