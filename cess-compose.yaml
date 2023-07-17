@@ -4,7 +4,7 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:1.7.0
+    image: harbor.lab.vaultid.com.br/cess/cess:1.7.1
     depends_on:
       - redis
     restart: always
