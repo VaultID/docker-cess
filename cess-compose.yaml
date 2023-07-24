@@ -33,7 +33,8 @@ services:
       - "redisPort=6379"
       - "SERVER_NAME=IP_Servidor:8080"
       - "HTTP_HTTPS=off"
-
+      - "sendMonitoring=false"
+      
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - 8080:8080
