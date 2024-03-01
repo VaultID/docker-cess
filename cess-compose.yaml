@@ -42,7 +42,8 @@ services:
       - "mockedPassword=clientSecret"
       - "billingApi=https://billing.hom.vaultid.com.br"  
 #      - "multiSignerAuth=[{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"}]" #Tasy
-      - "multiSignerAuth=[{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"}]" #MV Sistemas MuiltiPJ  
+      - "multiSignerAuth=[{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"},{\"username\": \"cnpjdopfx\", \"password\": \"senhadopfx\"}]" #MV Sistemas MuiltiPJ
+      - "validateCertificate=true"
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
       - 8081:8080
