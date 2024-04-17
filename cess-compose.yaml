@@ -35,7 +35,7 @@ services:
       - "SERVER_NAME=IP_Servidor:8080"
       - "HTTP_HTTPS=off"
       - "sendMonitoring=false"
-      - "certificateValidate=true"
+      - "validateCertificate=true"
       
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
