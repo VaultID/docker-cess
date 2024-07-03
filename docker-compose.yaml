@@ -17,7 +17,7 @@ services:
       - "signatureAdapter=MultiAdapter"
       - 'adapters=["CertifierAuthHubAdapter","MockedWingsPkcs12Adapter","MultiCloudAdapter"]'
       - "certifierAuthHubUrl=https://certifierauthhub.hom.vaultid.com.br"
-       - "billingApi=https://billing.hom.vaultid.com.br"
+      - "billingApi=https://billing.hom.vaultid.com.br"
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
       - "tokenValidityMAX=12"
@@ -37,7 +37,7 @@ services:
       - "SERVER_NAME=IP_Servidor:8080"
       - "HTTP_HTTPS=off"
       - "sendMonitoring=false"
-      - "validateCertificate=true"
+      - "validateCertificate=false"
       
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
