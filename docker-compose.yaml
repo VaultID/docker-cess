@@ -38,6 +38,7 @@ services:
       - "HTTP_HTTPS=off"
       - "sendMonitoring=false"
       - "validateCertificate=false"
+      - "multiSignerAuth=[{\"username\": \"xxxxxx\", \"password\": \"xxxxxx\"}]"
       
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
