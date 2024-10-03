@@ -15,7 +15,7 @@ services:
       # Se necessário, edite apenas as variávies abaixo: #
       - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"}}'
       - "signatureAdapter=MultiAdapter"
-      - 'adapters=["CertifierAuthHubAdapter","MockedWingsPkcs12Adapter","MultiCloudAdapter"]'
+      - 'adapters=["CertifierAuthHubAdapter","MultiCloudAdapter"]'
       - "certifierAuthHubUrl=https://certifierauthhub.hom.vaultid.com.br"
       - "billingApi=https://billing.hom.vaultid.com.br"
       - "cessUrl=http://localhost:8080"
@@ -38,7 +38,8 @@ services:
       - "HTTP_HTTPS=off"
       - "sendMonitoring=false"
       - "validateCertificate=false"
-      - "multiSignerAuth=[{\"username\": \"xxxxxx\", \"password\": \"xxxxxx\"}]"
+      - "mockedUsername=clientId"
+      - "mockedPassword=clientSecret"
       
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
