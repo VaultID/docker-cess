@@ -35,6 +35,7 @@ services:
       - "HTTP_HTTPS=off"
       - "sendMonitoring=false"
       - "validateCertificate=false"
+      - "signatureOnly=false"
       
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
