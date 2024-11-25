@@ -1,4 +1,4 @@
-# Arquivo para deploy do CESS em produção.
+# Arquivo para deploy do CESS.
 # VaultID - Soluções em criptografia e identidade.
 # 02/01/2019
 version: "3"
@@ -14,7 +14,10 @@ services:
       - 'clientSecretMd=SEU_CLIENT_SECRET'
       # Se necessário, edite apenas as variávies abaixo: #
       - 'urlsMultiCloud={"https:\/\/apihom.birdid.com.br":{"id":"SOLUTI","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"},"https:\/\/apicloudid.hom.vaultid.com.br":{"id":"VAULTID","client_id":"SEU_CLIENT_ID","client_secret":"SEU_CLIENT_SECRET"}}'
-      - "signatureAdapter=MultiCloudAdapter"
+      - "signatureAdapter=MultiAdapter"
+      - 'adapters=["MockedWingsPkcs12Adapter","MultiCloudAdapter","Pkcs12Adapter"]'
+      - "isPath=true"
+      - "path=/var/www/data/certs"
       - "cessUrl=http://localhost:8080"
       - "APACHE_SSL=false"
       - "tokenValidityMAX=12"
@@ -31,7 +34,7 @@ services:
       - "POST_MAX_SIZE=50M"
       - "redisHost=redis"
       - "redisPort=6379"
-      - "SERVER_NAME=IP_Servidor:8080"
+      - "SERVER_NAME=IP_Servidor:8081"
       - "HTTP_HTTPS=off"
       - "sendMonitoring=false"
       - "validateCertificate=false"
@@ -39,11 +42,11 @@ services:
       
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
-      - 8080:8080
-#    volumes:
+      - 8081:8080
+    volumes:
 #      - ./AcPrivada-truststore:/var/www/data/trust
 #      - ./hom-truststore:/var/www/data/trust
-#      - ./Certificados:/var/www/data/certs
+      - ./Certificados:/var/www/data/certs
 #      - path_crt:/etc/apache2/cert/cert.pem
 #      - path_key:/etc/apache2/cert/cert.key
 #      - ./license:/var/www/data/license
