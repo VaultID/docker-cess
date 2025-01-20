@@ -1,7 +1,7 @@
 # Arquivo para deploy do CESS em produção.
 # VaultID - Soluções em criptografia e identidade.
 # 02/01/2019
-version: "3"
+# version: "3"
 services:
   cess:
     image: harbor.lab.vaultid.com.br/cess/cess:1.11.4
