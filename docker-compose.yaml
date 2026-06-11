@@ -4,7 +4,7 @@
 version: "3"
 services:
   cess:
-    image: harbor.lab.vaultid.com.br/cess/cess:1.11.3
+    image: harbor.lab.vaultid.com.br/cess/cess:1.12.6
     depends_on:
       - redis
     restart: always
@@ -40,6 +40,7 @@ services:
       - "validateCertificate=false"
       - "mockedUsername=clientId"
       - "mockedPassword=clientSecret"
+      - "signatureOnly=false"
       
     ports:
       # Definir a PORTA_EXTERNA TCP pela qual o container será exposto na rede.
